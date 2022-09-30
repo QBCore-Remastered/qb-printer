@@ -29,7 +29,17 @@ RegisterNetEvent('qb-printer:server:SaveDocument', function(url)
             Player.Functions.AddItem('printerdocument', 1, nil, info)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['printerdocument'], "add")
         else
-            TriggerClientEvent('QBCore:Notify', src, Lang:t('error.invalid_ext')..ValidExtensionsText..Lang:t('error.allowed_ext'), "error")
+            TriggerClientEvent('ox_lib:notify', src, {
+                id = 'error_invalid_ext',
+                description = Lang:t('error.invalid_ext')..ValidExtensionsText..Lang:t('error.allowed_ext'),
+                duration = 5000,
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#ffffff'
+                },
+                icon = 'xmark',
+                iconColor = '#C53030'
+            })
         end
     end
 end)
