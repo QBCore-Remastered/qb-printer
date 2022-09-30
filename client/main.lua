@@ -38,19 +38,6 @@ RegisterNUICallback('CloseDocument', function(_, cb)
     cb('ok')
 end)
 
--- Command
-
-RegisterCommand('useprinter', function()
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
-    local PrinterObject = GetClosestObjectOfType(pos.x, pos.y, pos.z, 1.5, `prop_printer_01`, false, false, false)
-    if PrinterObject ~= 0 then
-        SendNUIMessage({
-            action = "start"
-        })
-        SetNuiFocus(true, true)
-    end
-end)
 RegisterNetEvent('qb-printer:printer',function()
     SendNUIMessage({
         action = "start"
@@ -60,16 +47,26 @@ end)
 
 if Config.UseTarget then
     CreateThread(function()
-        exports['qb-target']:AddTargetModel("prop_printer_01", {
-            options = {
-                {
-                    event = 'qb-printer:printer',
-                    type = 'client',
-                    icon = "fa fa-print	",
-                    label = Lang:t('info.use_printer'),
-                },
-            },
-            distance = 1.5,
-        })
+        local options = {
+            {
+                  name = 'printer:print',
+                  icon = 'fas fa-print',
+                  label = Lang:t('info.use_printer'),
+                  event = 'qb-printer:printer',
+              }
+          }
+          exports.ox_target:addModel(`prop_printer_01`, options)
+    end)
+else
+    RegisterCommand('useprinter', function()
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local PrinterObject = GetClosestObjectOfType(pos.x, pos.y, pos.z, 1.5, `prop_printer_01`, false, false, false)
+        if PrinterObject ~= 0 then
+            SendNUIMessage({
+                action = "start"
+            })
+            SetNuiFocus(true, true)
+        end
     end)
 end
