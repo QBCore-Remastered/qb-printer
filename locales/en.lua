@@ -1,10 +1,9 @@
 local Translations = {
     error = {
-        invalid_ext = "Thats not a valid extension, only %{fileext} extension links are allowed.",
+        invalid_ext = "Thats not a valid extension!",
     },
     info = {
         use_printer = "Use Printer"
-
     },
     command = {
         spawn_printer = "Spawn a printer"
