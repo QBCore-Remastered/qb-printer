@@ -1,5 +1,5 @@
 RegisterNetEvent('qb-printer:client:UseDocument', function(ItemData)
-    local DocumentUrl = ItemData.info.url ~= nil and ItemData.info.url or false
+    local DocumentUrl = ItemData.info.url or false
 
     SendNUIMessage({
         action = "open",
@@ -38,7 +38,7 @@ RegisterNUICallback('CloseDocument', function(_, cb)
     cb('ok')
 end)
 
-RegisterNetEvent('qb-printer:printer',function()
+RegisterNetEvent('qb-printer:printer', function()
     SendNUIMessage({
         action = "start"
     })
