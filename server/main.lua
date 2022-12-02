@@ -5,7 +5,7 @@ QBCore.Functions.CreateUseableItem("printerdocument", function(source, item)
 end)
 
 QBCore.Commands.Add("spawnprinter", Lang:t('command.spawn_printer'), {}, true, function(source, _)
-	TriggerClientEvent('qb-printer:client:SpawnPrinter', source)
+    TriggerClientEvent('qb-printer:client:SpawnPrinter', source)
 end, "admin")
 
 RegisterNetEvent('qb-printer:server:SaveDocument', function(url)

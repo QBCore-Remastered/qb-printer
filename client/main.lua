@@ -50,7 +50,7 @@ if Config.UseTarget then
         exports.ox_target:addModel(joaat('prop_printer_01'), {
             {
                 name = 'printer:print',
-                icon = 'fas fa-print',
+                icon = "fa-solid fa-print",
                 label = Lang:t('info.use_printer'),
                 event = 'qb-printer:printer'
             }

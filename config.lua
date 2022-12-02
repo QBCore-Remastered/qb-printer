@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.UseTarget = GetConvar('UseTarget', 'true') == 'true'
+Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 
 Config.ValidExtensions = {
     [".png"] = true,
