@@ -53,7 +53,7 @@ Printer.Start = function(data) {
 }
 
 Printer.Save = function(data) {
-    $.post('https://qb-printer/SaveDocument', JSON.stringify({
+    $.post(`https://${GetParentResourceName()}/SaveDocument`, JSON.stringify({
         url: $('.printer-input').val()
     }));
 }
@@ -61,5 +61,5 @@ Printer.Save = function(data) {
 Printer.Close = function(data) {
     $(".printer-container").fadeOut(150);
     $(".document-container").fadeOut(150);
-    $.post('https://qb-printer/CloseDocument');
+    $.post(`https://${GetParentResourceName()}/CloseDocument`);
 }
